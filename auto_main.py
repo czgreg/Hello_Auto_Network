@@ -7,7 +7,8 @@ import csv
 ip_list=sys.argv[1]
 command_list = sys.argv[2]
 
-switch_connect = ssh_behavior.ssh_behavior('pinduoduo@system','mko0MKO)')
+###修改登陆设备的账号密码
+switch_connect = ssh_behavior.ssh_behavior('自定义用户名','自定义密码)')
 
 with open(ip_list) as ip_list_o:
     ip_list_r = csv.reader(ip_list_o)

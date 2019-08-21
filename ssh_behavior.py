@@ -7,7 +7,7 @@ import csv
 
 class ssh_behavior():
 
-    def __init__(self,username='python',password='mko0MKO)'):
+    def __init__(self,username='1111',password='2222)'): ####可以设置默认账号密码，便于个人调用
         self.username = username
         self.password = password
         self.ssh_client = paramiko.SSHClient()
@@ -50,12 +50,3 @@ class ssh_behavior():
     def close(self):
         self.ssh_client.close()
 
-
-
-# sw1 = ssh_behavior('pinduoduo@system','mko0MKO)')
-# ip1 = '172.16.120.42'
-# command = ['display ip inter br','display interface bri']
-# sw1.connect(ip1)
-# output = sw1.config(command)
-# sw1.close()
-# print(output)

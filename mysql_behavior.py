@@ -5,7 +5,7 @@ import pymysql
 
 class mysql_behavior():
 
-    def __init__(self,host='10.211.55.6',username='root',password='abc,123',db='NetWE',table='Huawei'):
+    def __init__(self,host='1.1.1.1',username='root',password='123456',db='AAA',table='BBB'):  #可以定义好mysql连入信息，便于调用
         self.db = db
         self.table=table
         self.dbaes = pymysql.connect(
@@ -59,16 +59,6 @@ class mysql_behavior():
         self.dbcursor.close()
         self.dbaes.close()
 
-
-
-#测试
-#sw1 = mysql_insert('sw1','1.1.1.1','s5720','sdfewf','v123','patch1')
-#sw1.insert()
-#sw2 = mysql_insert('10.211.55.6','root','abc,123','test')
-#sw2 = mysql_behavior()
-#sw2.insert('sw334','2.10.81.98','s3720','xvdseg','v213','patch2')
-#sw2.select()
-#sw2.close()
 
 
 
