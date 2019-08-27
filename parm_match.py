@@ -11,7 +11,7 @@ class parm_match():
 #hostname,ip,device,sn,version,patch
 
     def hostname(self):
-        hostname = re.search(r"<\S{3,30}>",self.log)
+        hostname = re.search(r"<.*>",self.log)
         self.realhost = hostname.group()[1:-1]
 
     def ip(self):
@@ -19,11 +19,16 @@ class parm_match():
         self.realip = ip.group()
 
     def device(self):
-        device = re.search(r"S\d{4}\w?-\d{2}\w[-PWR]?-\w{2}-\w{2}", self.log)
-        self.realtype = device.group()
+        #device = re.search(r"S\d{4}\w?-\d{2}\w?P(-PWR)?-\wI-\wC", self.log)
+        device = re.search(r"\n.*'s Device status:", self.log)
+        if device == None:
+            print('{}匹配失败'.format(self.realhost))
+            self.realtype = '未知型号'
+        else:
+            self.realtype = device.group()[1:-17]
 
     def sn(self):
-        sn = re.search("210\w{17}", self.log)
+        sn = re.search(r"21\w{18}", self.log)
         self.realsn = sn.group()
 
     def version(self):
@@ -31,7 +36,7 @@ class parm_match():
         self.realver = version.group()
 
     def patch(self):
-        patch = re.search(r"V\d{3}R\d{3}SPH\d{3,}", self.log)
+        patch = re.search(r"V\d{3}R\d{3}SPH\d{2,}", self.log)
         if bool(patch) == False:
             self.realpatch = 'No patch exists'
         else:
